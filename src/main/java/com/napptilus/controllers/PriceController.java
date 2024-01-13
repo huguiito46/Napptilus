@@ -35,7 +35,7 @@ public class PriceController {
      *         Si se encuentra un precio, se devuelve un código de estado 200 (Éxito) junto con el precio.
      */
 
-    @GetMapping("query/search")
+    @GetMapping("/query/search")
     public ResponseEntity<Price> searchPrice(@RequestParam("date") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime date,
                                              @RequestParam("productId") Long productId,
                                              @RequestParam("brandId") Long brandId) {
