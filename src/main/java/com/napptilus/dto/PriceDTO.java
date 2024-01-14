@@ -1,5 +1,6 @@
 package com.napptilus.dto;
 
+
 import lombok.*;
 
 import java.math.BigDecimal;
