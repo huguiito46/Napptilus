@@ -20,3 +20,8 @@ spring:
 logging:
   level:
     com.Napptilus: INFO
+
+# Swagger-ui custom path
+springdoc:
+  swagger-ui:
+    path: /prices/swagger-ui.html
