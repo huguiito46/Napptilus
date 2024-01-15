@@ -1,6 +1,7 @@
-package com.napptilus.controllers;
+package com.napptilus.controller;
 
 
+import com.napptilus.dto.PriceDTO;
 import com.napptilus.entitis.Price;
 import com.napptilus.service.PriceService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +18,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("api/v1/napptilus/price")
+@RequestMapping("/api/v1/napptilus/price")
 public class PriceController {
 
     @Autowired
@@ -37,19 +38,31 @@ public class PriceController {
      *         Si se encuentra un precio, se devuelve un código de estado 200 (Éxito) junto con el precio.
      */
     @GetMapping("/query/search")
-    public ResponseEntity<Price> searchPrice(@RequestParam("date") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime date,
+    public ResponseEntity<?> searchPrice(@RequestParam("date") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime date,
                                              @RequestParam("productId") Long productId,
                                              @RequestParam("brandId") Long brandId) {
 
-
         Optional<List<Price>> opt_price = service
-                .findPricesByDateAndProductIdAndBrandIdQuery(date, productId, brandId);
+                .findPricesByDateAndProductIdAndBrandIdQuery
+                        (date, productId, brandId);
 
-        if (opt_price.isEmpty()) {
+        if (opt_price.isPresent() && !opt_price.get().isEmpty()) {
+
+            PriceDTO priceDTO = new PriceDTO(opt_price.get().get(0));
+
+            return new ResponseEntity<>(priceDTO, HttpStatus.OK);
+
+        } else {
+
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
-
-        return ResponseEntity.status(HttpStatus.OK).body(opt_price.get().get(0));
-
     }
+
+
+    @GetMapping("/all")
+    public List<Price> getAllPrices() {
+        return service.getAllPrices();
+    }
+
+
 }

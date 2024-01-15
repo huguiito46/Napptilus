@@ -21,11 +21,8 @@ public class Price {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
+    @Column(name = "ID", nullable = false)
     private Long id;
-
-    @Column(name = "BRAND_ID")
-    private Long brandId;
 
     @Column(name = "START_DATE")
     private LocalDateTime startDate;
@@ -48,7 +45,11 @@ public class Price {
     @Column(name = "CURR")
     private String curr;
 
-
+    @Column(name = "BRAND_ID")
+    private Long brandId;
 }
+
+
+
 
 
