@@ -1,4 +1,4 @@
-package com.napptilus.entitis;
+package com.napptilus.model.entitis;
 
 
 import jakarta.persistence.*;
@@ -39,7 +39,7 @@ public class Price {
     @Column(name = "PRIORITY")
     private Long priority;
 
-    @Column(name = "PRICE")
+    @Column(name = "PRICE", precision = 10, scale = 2)
     private BigDecimal price;
 
     @Column(name = "CURR")
@@ -47,6 +47,8 @@ public class Price {
 
     @Column(name = "BRAND_ID")
     private Long brandId;
+
+
 }
 
 

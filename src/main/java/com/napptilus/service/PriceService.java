@@ -1,7 +1,7 @@
 package com.napptilus.service;
 
 
-import com.napptilus.entitis.Price;
+import com.napptilus.model.dto.PriceDTO;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -11,10 +11,7 @@ import java.util.Optional;
 @Service
 public interface PriceService {
 
-    void savePrices(List<Price> prices);
 
-    List<Price> getAllPrices();
-
-    Optional<List<Price>> findPricesByDateAndProductIdAndBrandIdQuery(LocalDateTime date, Long productId, Long brandId);
+    Optional<List<PriceDTO>> findPricesByDateAndProductIdAndBrandIdQuery(LocalDateTime date, Long productId, Long brandId);
 
 }

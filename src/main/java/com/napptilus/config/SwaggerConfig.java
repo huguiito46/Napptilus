@@ -18,8 +18,5 @@ public class SwaggerConfig {
                         .title("PRICES-SQL-REST API Documentation")
                         .version("1.0.0")
                         .description("Documentación de la API REST para gestionar precios"));
-//                .externalDocs(new ExternalDocumentation()
-//                        .description("Enlace a más información")
-//                        .url("https://tu-enlace-de-documentacion.com"));
     }
 }

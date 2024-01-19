@@ -1,9 +1,8 @@
-package com.napptilus.dto;
+package com.napptilus.model.dto;
 
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.napptilus.entitis.Price;
+import com.napptilus.model.entitis.Price;
 import lombok.*;
 
 import java.math.BigDecimal;
@@ -15,7 +14,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-
+@EqualsAndHashCode
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class PriceDTO {
@@ -23,10 +22,8 @@ public class PriceDTO {
     private Long id;
     private Long brandId;
 
-    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss.SS")
     private LocalDateTime startDate;
 
-    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss.SS")
     private LocalDateTime endDate;
     private Long priceList;
     private Long productId;
@@ -34,8 +31,8 @@ public class PriceDTO {
     private BigDecimal price;
     private String curr;
 
-    // Constructor que acepta un objeto Price para facilitar la conversión
     public PriceDTO(Price price) {
+
         this.id = price.getId();
         this.brandId = price.getBrandId();
         this.startDate = price.getStartDate();
@@ -45,6 +42,22 @@ public class PriceDTO {
         this.priority = price.getPriority();
         this.price = price.getPrice();
         this.curr = price.getCurr();
+
+    }
+
+    public PriceDTO(PriceDTO priceDTO) {
+
+
+        this.id = priceDTO.getId();
+        this.brandId = priceDTO.getBrandId();
+        this.startDate = priceDTO.getStartDate();
+        this.endDate = priceDTO.getEndDate();
+        this.priceList = priceDTO.getPriceList();
+        this.productId = priceDTO.getProductId();
+        this.priority = priceDTO.getPriority();
+        this.price = priceDTO.getPrice();
+        this.curr = priceDTO.getCurr();
+
     }
 
 

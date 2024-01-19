@@ -13,14 +13,13 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
+    show-sql: true
   h2:
     console:
       enabled: true
       path: /h2-console
-logging:
-  level:
-    com.Napptilus: INFO
-
+loggin:
+  level: DEBUG
 # Swagger-ui custom path
 springdoc:
   swagger-ui:

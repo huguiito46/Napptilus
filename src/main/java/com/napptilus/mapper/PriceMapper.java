@@ -2,8 +2,8 @@ package com.napptilus.mapper;
 
 
 
-import com.napptilus.dto.PriceDTO;
-import com.napptilus.entitis.Price;
+import com.napptilus.model.dto.PriceDTO;
+import com.napptilus.model.entitis.Price;
 import org.mapstruct.Mapper;
 
 
